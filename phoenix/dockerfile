@@ -1,0 +1,13 @@
+FROM elixir
+
+MAINTAINER Alisson Morais
+
+RUN apt-get update
+RUN apt-get install -y nodejs
+RUn apt-get install -y npm
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN mix local.rebar
+RUN mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
+RUN apt-get install inotify-tools
+
+CMD ["iex"]
